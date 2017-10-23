@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ProductWizardModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Image">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="size" Type="int" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="link" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="Product_Details">
+    <Key>
+      <PropertyRef Name="Product_Id" />
+    </Key>
+    <Property Name="Product_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Product_Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Amount" Type="int" Nullable="false" />
+    <Property Name="Type" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Manufacture_Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Address" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="No_Of_Retailer" Type="int" Nullable="false" />
+    <Property Name="Online_Supplier" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="Contact_No" Type="bigint" />
+    <Property Name="imageid" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Product_Details_Image">
+    <End Role="Image" Type="Self.Image" Multiplicity="1" />
+    <End Role="Product_Details" Type="Self.Product_Details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Image">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Product_Details">
+        <PropertyRef Name="imageid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ProductWizardModelStoreContainer">
+    <EntitySet Name="Image" EntityType="Self.Image" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Product_Details" EntityType="Self.Product_Details" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Product_Details_Image" Association="Self.FK_Product_Details_Image">
+      <End Role="Image" EntitySet="Image" />
+      <End Role="Product_Details" EntitySet="Product_Details" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

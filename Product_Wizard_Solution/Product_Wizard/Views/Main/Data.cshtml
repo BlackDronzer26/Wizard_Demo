@@ -1,0 +1,73 @@
+﻿@model IEnumerable<Product_Wizard.Models.Product_Details>
+
+@{
+    /*Layout = null*/
+    ;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Data</title>
+
+    @Styles.Render("~/COntent/table.css")
+    @Styles.Render("~/COntent/icon.css")
+</head>
+<body>
+    <div> 
+        <div>
+            <h2>PRODUCT DETAILS</h2>
+        </div>
+        <div>
+            @Html.ActionLink("Add New Product", "ProductDetails", "Main")
+        </div>
+
+
+        
+        <table class="w3-table w3-striped w3-border" style="width:100%;">
+            <tr class="w3-red">
+                <th  >Sr.No</th>
+                <th  >Product_Name</th>
+                <th  >Amount</th>
+                <th  >Type</th>
+                <th  >Manufacture</th>
+                <th  >Address</th>
+                <th>No_Of_Retailer</th>
+                <th>Online_Supplier</th>
+                <th>Contact_No</th>
+                <th>Image_Id</th>
+                <th>Name</th>
+                <th>Size</th>
+                <th> Delete?</th>
+
+                @{ int count = 1;}
+            </tr>  
+            @foreach (var item in Model)
+            {
+                
+
+                <tr  >
+                    @*<td  ><a href='@string.Format("/Employee/update?id={0}", item.ID)'>@item.ID</a></td>*@
+                    <td style="text-align:center" >@count @*@item.Product_Id*@ </td>
+                    <td  >@item.Product_Name</td>
+                    <td style="text-align:center" >@item.Amount</td>
+                    <td style="text-align:center" >@item.Type</td>
+                    <td  >@item.Manufacture_Name</td>
+                    <td  >@item.Address</td>
+                    <td style="text-align:center" >@item.No_Of_Retailer</td>
+                    <td style="text-align:center" >@item.Online_Supplier</td>
+                    <td  >@item.Contact_No</td>
+                    <td><a href='@string.Format("/Image/Download?id={0}", item.Image.Id)' onclick="return ('Downloading')">@item.imageid</td>
+                    <td>@item.Image.Name</td>
+                    <td>@item.Image.size</td>
+                    <td style="text-align:center"  ><a href='@string.Format("/Main/Delete?id={0}", item.Product_Id)' onclick="return confirm('Are you sure you want to Delete?')"><i class="w3-padding w3-large w3-text-red glyphicon glyphicon-trash"></i>@*<span style="color:red; ">X</span>*@</td>
+                 
+                 @{ count = count + 1; }
+                </tr>
+            }
+        </table>
+        <a href="@Url.Action("ExportToExcel","Main")">Export Excel</a>
+    </div>
+</body>
+</html>

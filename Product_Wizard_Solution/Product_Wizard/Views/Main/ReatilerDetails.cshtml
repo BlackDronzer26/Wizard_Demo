@@ -1,0 +1,80 @@
+﻿@*@model Product.Models.ReatailerDetails*@
+@model Product.Models.Retailer_Info
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ReatilerDetails</title>
+
+    @*<style>
+        #container {
+            float:left;
+            margin:20px;
+        }
+    </style>*@
+
+    <script type="text/javascript">
+        function add() {
+            
+            //Create an input type dynamically.
+            var element = document.createElement("input");
+            
+            //Create Labels
+            var label = document.createElement("Label");
+            label.innerHTML = "Retailer Name";     
+
+            //Assign different attributes to the element.
+            element.setAttribute("type", "text");
+            element.setAttribute("value", "");
+            element.setAttribute("name", "name");
+            element.setAttribute("style", "width:200px");
+
+            label.setAttribute("style", "font-weight:normal");
+
+            // 'foobar' is the div id, where new fields are to be added
+            var foo = document.getElementById("container");
+
+            //Append the element in page (in span).
+            foo.appendChild(label);
+            foo.appendChild(element);
+            foo.writeln();
+           }
+    </script>
+    
+</head>
+<body>
+
+    @*<form actions="">
+        <div id="item">
+            <input type="text" name="name"> <br>
+            <input type="text" name="address"> <br>
+            <input type="text" name="email"> <br>
+        </div>
+        <input type="button" value="add-entry" id="add" />
+        <input type="submit" value="Submit" />
+
+    </form>*@
+<div> 
+        @using (Html.BeginForm("RetailerDetails", "Main", FormMethod.Post))
+        {
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.name, new { @class = "control-label col-md-2" })
+                <div class="col-md-10" id="container">
+                    @Html.TextBoxFor(model => model.name, new { type = "name", placeholder = "Retailer Name" })
+                </div></div>
+                <table id="container" style="width:250px"></table><br />
+                <div style="margin:auto">
+                    <p><input type="submit" value="Save" /></p>
+                    <input type="button" id="btnAdd" value="Add New Item" onClick="add()" />
+                </div>
+
+                <button class="button button1" type="submit" name="BtnPrev" value='Prev' formnovalidate> << PREV</button>
+                <button class="button button2" type="submit" name="BtnNext" value='Next'>NEXT>> </button>
+                }
+            </div>
+</body>
+</html>

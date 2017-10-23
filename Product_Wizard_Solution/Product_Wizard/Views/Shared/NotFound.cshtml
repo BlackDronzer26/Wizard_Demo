@@ -1,0 +1,44 @@
+﻿
+@{
+    //Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>NotFound</title>
+</head>
+<body>
+    <span style="color:aqua; font-family:'Times New Roman', Times, serif; font-size:large">@Html.ActionLink("Back To Home", "Index", "Main")</span>
+    <div> 
+       <span style="color:red;font-size:medium">Oops Invalid Url</span>
+     </div>
+    <div>
+        <img src= "@Url.Content("~/image/invalid.png")" height="200" /> @*<img src="@Url.Content("~/image/home.png")"  height="200" />*@
+    </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

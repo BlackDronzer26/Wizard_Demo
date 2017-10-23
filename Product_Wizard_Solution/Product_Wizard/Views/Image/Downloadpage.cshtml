@@ -1,0 +1,72 @@
+﻿@model IEnumerable<Product_Wizard.Models.Image>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Download</title>
+
+
+    @Styles.Render("~/COntent/table.css"),
+    @Styles.Render("~/COntent/icon.css")
+</head>
+<body>
+    <div>
+
+
+        <table class="w3-table w3-striped w3-border" style="width:100%;">
+            <tr class="w3-red">
+                <th>Sr.No</th>
+                <th>Name</th>
+                <th>Size</th>
+                <th>Link</th>
+                <th> Download</th>
+
+                @{ int count = 1;}
+            </tr>
+            @foreach (var item in Model)
+            {
+
+
+                <tr>
+                    @*<td  ><a href='@string.Format("/Employee/update?id={0}", item.ID)'>@item.ID</a></td>*@
+                    <td style="text-align:center">@count @*@item.Product_Id*@ </td>
+                    <td>@item.Name</td>
+                    <td style="text-align:center">@item.size</td>
+                    <td style="text-align:center">@item.link</td>
+                    <td style="text-align:center"><a href='@string.Format("/Image/Download?id={0}", item.Id)' onclick="return ('Downloading')"><span style="color:red; ">Download</span></td>
+
+                    @{ count = count + 1; }
+                </tr>
+                        }
+        </table>
+
+
+
+
+
+
+        @*@Html.ActionLink("Download File", "Download", "Image", new { id = Model.id })*@
+
+
+        @*@foreach (var item in Model)
+        {
+            <table>
+                <tr>
+                    <td>
+                        @if (item.Name != null)
+                        {
+                            @Html.ActionLink("Download", "Image", new { id = item.Id })
+                        }
+                    </td>
+
+                </tr>
+            </table>*@
+        }
+    </div>
+</body>
+</html>

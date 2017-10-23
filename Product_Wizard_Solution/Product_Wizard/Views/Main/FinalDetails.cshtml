@@ -1,0 +1,70 @@
+﻿@model Product_Wizard.Models.Product_Details
+
+@{
+    //Layout = null;
+    ViewBag.Title = "Product Details";
+}
+@Styles.Render("~/COntent/form.css")
+<br />
+<br />
+<div class="w3-panel w3-border w3-round-xlarge">
+    <div>
+        <span style="color:darkgoldenrod; height:inherit;margin:20px; font-size:x-large">Please Click On Submit If All Details Are Correctly Filled</span>
+    </div>
+    <br />
+
+    <table class="w3-table w3-striped w3-border" style="width:50%">
+        <tr class="w3-red">
+            <th>Attribute: </th>
+            <th>Value</th>
+        </tr>
+
+        <tr>
+            <th>Product Name : </th>
+            <th>@Model.Product_Name</th>
+        </tr>
+        <tr>
+            <th>Product Type : </th>
+            <th>@Model.Type</th>
+        </tr>
+        <tr>
+            <th>Price : </th>
+            <th>@Model.Amount</th>
+        </tr>
+
+        <tr>
+            <th>Manufacture Name : </th>
+            <th>@Model.Manufacture_Name</th>
+        </tr>
+        <tr>
+            <th>Address: </th>
+            <th>@Model.Address</th>
+        </tr>
+        <tr>
+            <th>No_Of_Retailer : </th>
+            <th>@Model.No_Of_Retailer</th>
+        </tr>
+        <tr>
+            <th>Online Supplier : </th>
+            <th>@Model.Online_Supplier</th>
+        </tr>
+
+    </table>
+    <br />
+    @using (Html.BeginForm("FinalDetail", "Main", FormMethod.Post))
+    {
+        <button class="button button1" type="submit" name="BtnPrev" value='Prev'> << PREV </button>
+            <button class="button button2" type="submit" name="Cancel" value='Cancel'>CANCEL <span style="color:red">X</span> </button>
+            <button class="button button2" type="submit" name="Save" value='Submit'> SUBMIT  </button>
+    }
+    <br />
+
+</div>
+
+
+
+
+
+
+
+@Styles.Render("~/content/table.css")

@@ -1,0 +1,76 @@
+﻿@model Product.Models.ProductDetails
+
+@{
+    ViewBag.Title = "Product Details";
+}
+@Styles.Render("~/COntent/form.css")
+
+<h2>ProductDetails</h2>
+
+
+@using (Html.BeginForm("ProductDetails", "Main", FormMethod.Post))
+{
+    //@Html.EditorForModel();
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Pname, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.Pname)
+            @Html.ValidationMessageFor(model => model.Pname)
+        </div>
+    </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Ptype, new { @class = "control-label col-md-2" }) 
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Ptype )
+                @Html.ValidationMessageFor(model => model.Ptype)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Pamount, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Pamount, new { type = "number", placeholder = " " })
+                @Html.ValidationMessageFor(model => model.Pamount)
+            </div>
+        </div><br />
+
+        <button class="button button2" type="submit" name="BtnNext" value='Next' > Next>></button>
+}
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

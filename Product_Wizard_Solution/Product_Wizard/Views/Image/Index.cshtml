@@ -1,0 +1,31 @@
+﻿@model Product_Wizard.Models.Image
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+@{
+    ViewBag.Title = "file";
+}
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div> 
+    
+
+    <h2>Upload file</h2>
+    @using (Html.BeginForm("Upload", "Image", FormMethod.Post,
+                                 new { enctype = "multipart/form-data" }))
+    {
+        <input type="file" name="file" id="file" /><br><br>
+        <input type="submit" value="Upload file" />
+        <br><br>
+        @ViewBag.Message
+    }
+    
+    </div>
+</body>
+</html>
